@@ -1,0 +1,43 @@
+---
+title: 'Preventing code degradation with eslint-plugin-sonarjs'
+publishedAt: '2021-12-23'
+---
+
+If you have worked with any sizable JavaScript project, be a front-end React application or a back-end Node service, you are most likely aware of the importance of using ESLint and other static code analysis tools.
+
+In this article I'll show you a less know ESLint plugin that will help keep your codebase clean, by detecting early _bugs_ and _code smells_. It's the [eslint-plugin-sonarjs](https://github.com/SonarSource/eslint-plugin-sonarjs), made by the same guys behind [SonarQube](https://www.sonarqube.org/).
+
+## Installation
+
+You'll need a JavaScript/Typescript project with [ESLint configured](https://github.com/eslint/eslint#installation-and-usage) in it.
+
+On your project, install `eslint-plugin-sonarjs` as a dev dependency using `npm`:
+
+```bash
+npm install eslint-plugin-sonarjs --save-dev
+```
+
+Once installed, update your `.eslintrc` file to include the following:
+
+```json
+{
+	"plugins": ["sonarjs"],
+	"extends": ["plugin:sonarjs/recommended"]
+}
+```
+
+## What is it checking?
+
+You can check the [full list of rules here](https://github.com/SonarSource/eslint-plugin-sonarjs#rules). By using the `plugin:sonarjs/recommended` configuration you'll have all of them enabled, with a few exceptions.
+
+All those rules are intended to catch code that have potential bugs or code smells, like [having too many switch case statements](https://github.com/SonarSource/eslint-plugin-sonarjs/blob/master/docs/rules/max-switch-cases.md) or [duplicated branches of code](https://github.com/SonarSource/eslint-plugin-sonarjs/blob/master/docs/rules/no-all-duplicated-branches.md).
+
+But the most important rule of this set is the **[Cognitive Complexity](https://github.com/SonarSource/eslint-plugin-sonarjs/blob/master/docs/rules/cognitive-complexity.md)** one.
+
+## The Cognitive Complexity Rule
+
+It checks against actual perceived complexity in code, given it a score on how hard is for a human to understand it. It's _not_ the same as [Cyclomatic Complexity](https://eslint.org/docs/rules/complexity), which measures how many different paths a programs code can take. You can read [the full paper on Cognitive Complexity](https://www.sonarsource.com/docs/CognitiveComplexity.pdf) to learn more about it.
+
+This rule alone can act as a guard rail to prevent a project from becoming increasingly more complex and hard to maintain over time. You can also mix in a [max-lines](https://eslint.org/docs/rules/max-lines#enforce-a-maximum-file-length-max-lines) rule to be even safer.
+
+And since it's a ESLint rule with a configurable score, it helps reduce discussions about code quality and maintainability inside a pull request, making them more focused around the problem the PR is trying to solve.

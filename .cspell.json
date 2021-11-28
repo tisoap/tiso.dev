@@ -1,0 +1,34 @@
+{
+	"version": "0.2",
+	"language": "en,lorem",
+	"ignorePaths": [
+		".next/**",
+		".vscode/**",
+		".yarn/**",
+		"node_modules/**",
+		".eslintrc",
+		"next.config.js",
+		"package.json",
+		"yarn.lock"
+	],
+	"allowCompoundWords": false,
+	"words": [
+		"atrule",
+		"chakra",
+		"Consolas",
+		"Cyclomatic",
+		"hireme",
+		"Menlo",
+		"monospace",
+		"Noto",
+		"Pluggable",
+		"prettierrc",
+		"Puccinelli",
+		"Qube",
+		"rehype",
+		"slategray",
+		"sonarjs",
+		"Tiso",
+		"Vercel"
+	]
+}
