@@ -9,8 +9,6 @@
 		"build": "next build",
 		"dev": "next",
 		"eslint": "eslint --report-unused-disable-directives --fix --ext .js,.ts,.jsx,.tsx .",
-		"generate-theme-typings": "chakra-cli tokens ./lib/theme.ts",
-		"postinstall": "yarn generate-theme-typings",
 		"prettier": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,mdx,json}' --config ./.prettierrc",
 		"spellcheck": "cspell --no-progress '**/*.{js,jsx,ts,tsx,json,css,scss,md,mdx}'",
 		"start": "next start",
