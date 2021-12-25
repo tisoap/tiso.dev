@@ -28,9 +28,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
 				<Text color={useMutedTextColor()}>{project.description}</Text>
 				<HStack spacing={3}>
 					{project.demo && (
-						<ExternalLink href={`https://${project.demo}`}>
-							Preview
-						</ExternalLink>
+						<ExternalLink href={project.demo}>Preview</ExternalLink>
 					)}
 					{project.github && (
 						<ExternalLink href={project.github}>GitHub</ExternalLink>
