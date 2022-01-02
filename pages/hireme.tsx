@@ -1,4 +1,4 @@
-import { Box, useColorModeValue } from '@chakra-ui/react'
+import { Flex, useColorModeValue } from '@chakra-ui/react'
 import { MainLayout } from 'layouts'
 
 const HireMePage = () => {
@@ -6,15 +6,24 @@ const HireMePage = () => {
 
 	return (
 		<MainLayout title="tiso.dev | Hire Me">
-			<Box
-				as="iframe"
+			<Flex
+				backgroundImage="/images/loading-buffering.gif"
+				backgroundRepeat="no-repeat"
+				backgroundSize="100px 100px"
+				backgroundPosition="center"
 				backgroundColor="gray.800"
-				title="Hire Me"
-				src="https://tripetto.app/run/FH9XOQ7SCZ"
 				flex={1}
 				boxShadow={boxShadow}
 				rounded="md"
-			/>
+			>
+				<Flex
+					as="iframe"
+					title="Hire Me"
+					src="https://tripetto.app/run/FH9XOQ7SCZ"
+					flex={1}
+					rounded="md"
+				/>
+			</Flex>
 		</MainLayout>
 	)
 }
