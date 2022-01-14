@@ -1,6 +1,7 @@
 import { Card } from 'components/Card'
 import { FrontMatter } from 'components/FrontMatter'
 import { InternalLink } from 'components/InternalLink'
+import { useBodyTextColor, useInlineCodeBgColor } from 'hooks/colorMode'
 import { MainLayout } from './MainLayout'
 import type { PostFrontMatter, PostMetadata } from 'lib/mdx'
 import type { ReactNode } from 'react'
@@ -18,7 +19,30 @@ export const BlogLayout = ({
 }: BlogLayoutProps) => {
 	return (
 		<MainLayout title={`tiso.dev - ${frontMatter.title}`}>
-			<Card as="article">
+			<Card
+				as="article"
+				/*
+					For some reason, I can't use custom "code" and "pre" components in the
+					MarkdownProvider while using the rehype-prism-plus plugin. So I've
+					resorted to style styling them here.
+				*/
+				sx={{
+					'& code, & pre, & code[class*="language-"], & pre[class*="language-"]':
+						{
+							fontFamily: 'mono',
+							fontSize: 'md',
+						},
+					'& pre[class*="language-"]': {
+						borderRadius: 'md',
+					},
+					'& p code': {
+						color: useBodyTextColor(),
+						backgroundColor: useInlineCodeBgColor(),
+						padding: '.2em .4em',
+						borderRadius: 'md',
+					},
+				}}
+			>
 				<FrontMatter matter={frontMatter} metadata={metadata} mb={8} />
 				{children}
 				<InternalLink mt={4} href="/">

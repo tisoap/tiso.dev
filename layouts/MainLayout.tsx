@@ -34,6 +34,7 @@ export const MainLayout = ({
 			flexDirection="column"
 			color={useBodyTextColor()}
 			backgroundColor={useBackgroundColor()}
+			id="layout"
 		>
 			<Head>
 				<title>{title}</title>

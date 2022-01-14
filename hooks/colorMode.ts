@@ -17,3 +17,6 @@ export const useMutedTextColor = () => useColorModeValue('gray.500', 'gray.300')
 
 export const useBrandTextColor = () =>
 	useColorModeValue('purple.800', 'purple.200')
+
+export const useInlineCodeBgColor = () =>
+	useColorModeValue('gray.100', 'gray.700')

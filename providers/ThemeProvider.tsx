@@ -1,9 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
-import { mode } from '@chakra-ui/theme-tools'
 import type { ThemeConfig } from '@chakra-ui/react'
-import type { Dict } from '@chakra-ui/utils'
 import type { ReactNode } from 'react'
 
 export const config: ThemeConfig = {
@@ -18,27 +14,14 @@ export const theme = extendTheme({
 		mono: "'Fira Code', monospace",
 	},
 	styles: {
-		global: (props: Dict<any>) => ({
+		global: {
 			'html, body, #__next': {
 				fontFamily: 'body',
 				fontSize: 'md',
 				minWidth: '320px',
 				height: '100%',
 			},
-			'code, pre, code[class*="language-"], pre[class*="language-"]': {
-				fontFamily: "'Fira Code', monospace !important",
-				fontSize: '1em !important',
-			},
-			'pre[class*="language-"]': {
-				borderRadius: 'md',
-			},
-			'p code': {
-				color: mode('gray.800', 'gray.100')(props),
-				backgroundColor: mode('gray.100', 'gray.700')(props),
-				padding: '.2em .4em',
-				borderRadius: 'md',
-			},
-		}),
+		},
 	},
 	config,
 })
