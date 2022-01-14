@@ -1,0 +1,100 @@
+---
+title: "You shouldn't have to worry about CSS class names"
+publishedAt: '2022-01-14'
+---
+
+Naming things in software development is often considered a difficult task. This is especially true when writing CSS selectors that can potentially clash with each other without warning, if you're not careful. To avoid this problem, it's common for developers to adopt a CSS _naming convention_, like [BEM](http://getbem.com/), [SMACSS](http://smacss.com/) and other letter soup acronyms.
+
+But what if I told you _shouldn't_ have to use those conventions? That there is a way to style your web application without ever need to worry about styles being overridden ever again? In fact there are several options available to remove this burden from your developer life, and we're going to explore them here.
+
+## Using your front end framework
+
+Any modern front end framework like React, Angular or Vue will have an official CLI tool to help you quickly bootstrap and build a new project.
+
+For React it's [Create React APP](https://create-react-app.dev/), and if you have created your project using this tool, you can already say good bye to CSS naming conventions by making use of [CSS Modules](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/). In short, you can create a separate `MyComponent.module.css` and import it directly inside your `MyComponent.js` file:
+
+### `MyComponent.module.css`
+
+```css
+.myClass {
+	color: green;
+}
+```
+
+### `MyComponent.js`
+
+```jsx
+import styles from './MyComponent.module.css'
+
+export const MyComponent = () => {
+	return <p className={styles.myClass}>Hello World!</p>
+}
+```
+
+### Result
+
+```html
+<p class="MyComponent_myClass_by3yq">Hello World!</p>
+```
+
+Note that the resulting class name was changed from the original `myClass` name. This is CRA doing to automatically avoid class name collisions with other components. So it does not matter if in another component you create a `.myClass` class with different styling, it will never be applied to `MyComponent` since they will be changed at build time. However this will only work if you add `.module` at the end of your css filename.
+
+And for the same purpose, Angular has [Component Styles](https://angular.io/guide/component-styles) and Vue has [Scoped CSS](https://vue-loader.vuejs.org/guide/scoped-css.html). If you're using another front end framework, check if it has a way to scope CSS styling to a single component.
+
+## Using a CSS-in-JS library
+
+CSS-in-JS is like what the name suggests: you write your CSS styles as JavaScript code, and a library will convert it to individual component styles at run time. Some of the more popular libraries for this are [Styled Components](https://styled-components.com/) and [Emotion](https://emotion.sh/docs/introduction).
+
+Here's the same example as before, but now using _Styled Components_:
+
+### `MyComponent.js`
+
+```jsx
+import styled from 'styled-components'
+
+const Styled = styled.p`
+	color: green;
+`
+
+export const MyComponent = () => {
+	return <Styled>Hello World!</Styled>
+}
+```
+
+### Result
+
+```html
+<p class="sc-hgKiOD DFGGm">Hello World!</p>
+```
+
+Notice that you didn't need to write a CSS class at all, and instead the styling was written as part of the JS code. The `styled.p` in this case is a [Tagged template](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates), a special function that you can call by passing a template literal.
+
+There's also popular frameworks that bundle CSS-in-JS solutions themselves, like [Next.js](https://nextjs.org/docs/basic-features/built-in-css-support#css-in-js) with `<style jsx>` support, or [Chakra UI](https://chakra-ui.com/docs/features/style-props) providing a lot of custom styling props.
+
+## Using an Atomic Design System
+
+The idea behind the Atomic Design methodology is that, instead of having highly specialized CSS classes for each use case, you have a lot of generic classes that apply a single style at the time, and you compose those classes inside your component. There's no name clashes because you would not be creating new CSS classes, only using what's available in the design system.
+
+The most popular CSS framework that uses this concept is [TailwindCSS](https://tailwindcss.com/). It gives you a lot of generic classes like `font-bold` or `text-lg`, and you add as many as necessary to your component until you're satisfied with the design. For example:
+
+### `MyComponent.js`
+
+```jsx
+export const MyComponent = () => {
+	return <p className="text-green-500">Hello World!</p>
+}
+```
+
+### Result
+
+```html
+<p class="text-green-500">Hello World!</p>
+```
+
+With this approach, you can end up with a lot of classes applied to a single element, but the idea is that all this should be abstracted away in a custom component, and you reuse this component instead. I.E instead of adding `text-green-500` to every paragraph that needs it, you would reuse the `MyComponent` component, that applies the `text-green-500` class internally.
+
+## Using Web Components with Shadow DOM
+
+Web components are the web native way to create custom reusable elements. They have something called a _shadow DOM_, which can encapsulate styling to single component. You can learn more about web components in general [here](https://developer.mozilla.org/en-US/docs/Web/Web_Components), and about the shadow DOM [here](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM).
+
+However even this being the native way to do style encapsulation, it's a much more involved and complex solution to do in your own. That's why I recommend using a library that already provides ready to use web components, like [Material Web](https://github.com/material-components/material-web), or something more developer friendly that compiles down to native Web Components, like [Lit](https://lit.dev/) or [Stencil](https://stenciljs.com/).
