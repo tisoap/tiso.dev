@@ -27,18 +27,20 @@ export const BlogLayout = ({
 					resorted to style styling them here.
 				*/
 				sx={{
-					'& code, & pre, & code[class*="language-"], & pre[class*="language-"]':
-						{
-							fontFamily: 'mono',
-							fontSize: 'md',
-						},
+					'& code, & pre': {
+						fontFamily: 'mono',
+						fontSize: 'inherit',
+					},
+					'& code[class*="language-"], & pre[class*="language-"]': {
+						fontSize: 'sm',
+					},
 					'& pre[class*="language-"]': {
 						borderRadius: 'md',
 					},
 					'& p code': {
 						color: useBodyTextColor(),
 						backgroundColor: useInlineCodeBgColor(),
-						padding: '.2em .4em',
+						padding: '.1em .3em',
 						borderRadius: 'md',
 					},
 				}}

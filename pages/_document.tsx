@@ -20,7 +20,7 @@ class MyDocument extends Document {
 					/>
 					<link
 						rel="stylesheet"
-						href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Fira+Sans:ital,wght@0,400;0,600;1,400&display=swap"
+						href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap"
 					/>
 				</Head>
 				<body>

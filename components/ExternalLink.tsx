@@ -1,4 +1,4 @@
-import { Link } from '@chakra-ui/react'
+import { Link, Text } from '@chakra-ui/react'
 import { BiLinkExternal } from 'react-icons/bi'
 import { useLinkColor } from 'hooks/colorMode'
 import type { LinkProps } from '@chakra-ui/react'
@@ -31,10 +31,16 @@ export const ExternalLink = ({
 			{...rest}
 		>
 			{children}
-			&nbsp;
-			<BiLinkExternal
-				style={{ display: 'inline', position: 'relative', top: '2px' }}
-			/>
+			<Text as="span" whiteSpace="nowrap">
+				&nbsp;
+				<BiLinkExternal
+					style={{
+						display: 'inline',
+						position: 'relative',
+						top: '2px',
+					}}
+				/>
+			</Text>
 		</Link>
 	)
 }

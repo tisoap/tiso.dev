@@ -7,6 +7,7 @@
 	"author": "Tiso Alvarez Puccinelli",
 	"scripts": {
 		"build": "next build",
+		"check": "yarn typecheck && yarn spellcheck && yarn prettier && yarn eslint",
 		"dev": "next",
 		"eslint": "eslint --report-unused-disable-directives --fix --ext .js,.ts,.jsx,.tsx .",
 		"prettier": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,mdx,json}' --config ./.prettierrc",

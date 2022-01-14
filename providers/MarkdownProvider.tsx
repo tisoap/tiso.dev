@@ -35,7 +35,7 @@ const h2 = (props: HeadingProps) => (
 const h3 = (props: HeadingProps) => (
 	<Heading size="md" mt={8} mb={4} {...props} />
 )
-const p = (props: TextProps) => <Text my={4} {...props} />
+const p = (props: TextProps) => <Text my={4} lineHeight="1.8em" {...props} />
 
 export const components = {
 	a,
