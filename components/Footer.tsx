@@ -1,4 +1,5 @@
 import { usePrefersReducedMotion, Text } from '@chakra-ui/react'
+import { data } from 'data'
 import { ExternalLink } from './ExternalLink'
 import { MotionHStack } from './MotionBox'
 import type { StackProps } from '@chakra-ui/react'
@@ -24,10 +25,12 @@ export const Footer = (props: StackProps) => {
 			spacing={0}
 			{...props}
 		>
-			<ExternalLink href="https://github.com/tisoap/tiso.dev">
+			<ExternalLink href={data.website.source}>
 				Source code on Github
 			</ExternalLink>
-			<Text p={4}>Copyright &copy; {year} Tiso Alvarez Puccinelli</Text>
+			<Text p={4}>
+				Copyright &copy; {year} {data.owner.fullName}
+			</Text>
 		</MotionHStack>
 	)
 }

@@ -1,25 +1,20 @@
 import { HStack } from '@chakra-ui/react'
 import { AiOutlineGithub, AiFillLinkedin } from 'react-icons/ai'
 import { FaStackOverflow } from 'react-icons/fa'
+import { data } from 'data'
 import { IconLink } from './IconLink'
 import type { StackProps } from '@chakra-ui/react'
 
 export const SocialIcons = (props: StackProps) => {
 	return (
 		<HStack spacing={4} {...props}>
-			<IconLink
-				href="https://www.linkedin.com/in/tiso-alvarez-puccinelli"
-				title="LinkedIn"
-			>
+			<IconLink href={data.owner.linkedIn} title="LinkedIn">
 				<AiFillLinkedin />
 			</IconLink>
-			<IconLink href="https://github.com/tisoap" title="GitHub">
+			<IconLink href={data.owner.gitHub} title="GitHub">
 				<AiOutlineGithub />
 			</IconLink>
-			<IconLink
-				href="https://stackoverflow.com/users/story/8078275"
-				title="Stack Overflow"
-			>
+			<IconLink href={data.owner.stackOverflow} title="Stack Overflow">
 				<FaStackOverflow />
 			</IconLink>
 		</HStack>

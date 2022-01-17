@@ -2,17 +2,12 @@ import { Box, Heading, Text } from '@chakra-ui/react'
 import { AnimatedTag } from 'components/AnimatedTag'
 import { RecentProjectPost } from 'components/RecentProjectPost'
 import { SocialIcons } from 'components/SocialIcons'
+import { data } from 'data'
 import { useBrandColor } from 'hooks/colorMode'
 import { MainLayout } from 'layouts'
 import { getTimeWorking } from 'lib/date'
 import { getAllPostsData } from 'lib/mdx'
 import type { BlogPost } from 'lib/mdx'
-
-export const meta = {
-	type: 'website',
-	title: "Tiso's portfolio",
-	summary: 'Learning and projects',
-}
 
 export type HomeProps = {
 	posts: BlogPost[]
@@ -20,7 +15,7 @@ export type HomeProps = {
 
 const HomePage = ({ posts }: HomeProps) => {
 	return (
-		<MainLayout title="tiso.dev | Home">
+		<MainLayout title={`${data.website.name} | Home`}>
 			<Box as="header" mb={14}>
 				<Heading
 					as="h1"
@@ -30,7 +25,7 @@ const HomePage = ({ posts }: HomeProps) => {
 				>
 					Hi, I&apos;m&nbsp;
 					<Box as="span" color={useBrandColor()}>
-						Tiso
+						{data.owner.firstName}
 					</Box>
 					&nbsp;
 					<AnimatedTag />

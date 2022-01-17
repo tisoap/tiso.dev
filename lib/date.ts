@@ -1,4 +1,5 @@
 import { parseISO, format, formatDistanceToNowStrict } from 'date-fns'
+import { data } from 'data'
 
 export const formatStringDate = (stringDate: string) => {
 	try {
@@ -9,5 +10,5 @@ export const formatStringDate = (stringDate: string) => {
 	}
 }
 
-const startDate = new Date(2016, 5, 27)
-export const getTimeWorking = () => formatDistanceToNowStrict(startDate)
+export const getTimeWorking = () =>
+	formatDistanceToNowStrict(data.owner.startedWorking)

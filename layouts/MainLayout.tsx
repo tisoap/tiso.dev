@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { Footer } from 'components/Footer'
 import { MotionBox } from 'components/MotionBox'
 import { Navbar } from 'components/Navbar'
+import { data } from 'data'
 import { useBodyTextColor, useBackgroundColor } from 'hooks/colorMode'
 import type { ReactNode } from 'react'
 
@@ -21,7 +22,7 @@ const animationProps = {
 
 export const MainLayout = ({
 	children,
-	title = 'tiso.dev',
+	title = data.website.name,
 }: MainLayoutProps) => {
 	const router = useRouter()
 	const prefersReducedMotion = usePrefersReducedMotion()
@@ -38,11 +39,14 @@ export const MainLayout = ({
 		>
 			<Head>
 				<title>{title}</title>
-				<link rel="canonical" href={`https://tiso.dev${router.asPath}`} />
+				<link rel="canonical" href={`${data.website.domain}${router.asPath}`} />
 				<meta name="robots" content="follow, index" />
 				<meta property="og:type" content="website" />
-				<meta property="og:url" content={`https://tiso.dev${router.asPath}`} />
-				<meta property="og:site_name" content="tiso.dev" />
+				<meta
+					property="og:url"
+					content={`${data.website.domain}${router.asPath}`}
+				/>
+				<meta property="og:site_name" content={data.website.name} />
 				<meta property="og:title" content={title} />
 			</Head>
 			<Navbar mb={8} flex={0} />

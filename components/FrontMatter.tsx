@@ -1,5 +1,6 @@
 import { Box, Heading, Flex, Text } from '@chakra-ui/react'
 import { AiOutlineFieldTime } from 'react-icons/ai'
+import { data } from 'data'
 import { formatStringDate } from 'lib/date'
 import type { BoxProps } from '@chakra-ui/react'
 import type { PostFrontMatter, PostMetadata } from 'lib/mdx'
@@ -24,7 +25,7 @@ export const FrontMatter = ({
 			<Flex justifyContent="space-between" mt={4} flexWrap="wrap">
 				<Text as="span" fontSize="sm">
 					<Box as="address" display="inline">
-						Tiso Alvarez Puccinelli
+						{data.owner.fullName}
 					</Box>
 					&nbsp;/&nbsp;
 					<Box as="time" dateTime={matter.publishedAt}>
