@@ -7,6 +7,7 @@ class MyDocument extends Document {
 		return (
 			<Html lang="en">
 				<Head>
+					<link rel="prefetch" href="/images/loading-buffering.gif" />
 					<link
 						rel="stylesheet"
 						href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.5.0/prism-vsc-dark-plus.min.css"
