@@ -1,30 +1,6 @@
-import { ChakraProvider, extendTheme } from '@chakra-ui/react'
-import type { ThemeConfig } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react'
+import { theme } from './theme'
 import type { ReactNode } from 'react'
-
-export const config: ThemeConfig = {
-	initialColorMode: 'light',
-	useSystemColorMode: false,
-}
-
-export const theme = extendTheme({
-	fonts: {
-		body: "'Fira Sans', sans-serif",
-		heading: "'Fira Sans', sans-serif",
-		mono: "'Fira Code', monospace",
-	},
-	styles: {
-		global: {
-			'html, body, #__next': {
-				fontFamily: 'body',
-				fontSize: 'md',
-				minWidth: '320px',
-				height: '100%',
-			},
-		},
-	},
-	config,
-})
 
 type ThemeProviderProps = {
 	children: ReactNode
