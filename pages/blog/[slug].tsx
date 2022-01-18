@@ -5,6 +5,8 @@ import { components } from 'providers/MarkdownProvider'
 import type { BlogPostWithMDX } from 'lib/mdx'
 import type { GetStaticProps } from 'next'
 
+import 'prism-themes/themes/prism-vsc-dark-plus.min.css'
+
 export interface BlogPageProps {
 	post: BlogPostWithMDX
 }

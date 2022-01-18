@@ -10,13 +10,6 @@ class MyDocument extends Document {
 					<link rel="prefetch" href="/images/loading-buffering.gif" />
 					<link
 						rel="stylesheet"
-						href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.5.0/prism-vsc-dark-plus.min.css"
-						integrity="sha512-GU4Q2LAEtdpc8WmjcbSJGxM6c8D69ggI3mc5SRnfnxpg5AkYYA0BEVve0W9Oj2wZR0UItklQK2RBKLtDsQHNzg=="
-						crossOrigin="anonymous"
-						referrerPolicy="no-referrer"
-					/>
-					<link
-						rel="stylesheet"
 						href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,600;1,400&display=swap"
 					/>
 					<link
