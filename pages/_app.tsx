@@ -5,7 +5,7 @@ import type { AppProps } from 'next/app'
 const MyApp = ({ Component, pageProps, router }: AppProps) => (
 	<ThemeProvider>
 		<MarkdownProvider>
-			<AnimatePresence initial exitBeforeEnter>
+			<AnimatePresence initial={false} exitBeforeEnter>
 				<Component {...pageProps} key={router.route} />
 			</AnimatePresence>
 		</MarkdownProvider>

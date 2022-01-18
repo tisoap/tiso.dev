@@ -1,4 +1,4 @@
-import { Box, usePrefersReducedMotion } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { Footer } from 'components/Footer'
@@ -25,8 +25,6 @@ export const MainLayout = ({
 	title = data.website.name,
 }: MainLayoutProps) => {
 	const router = useRouter()
-	const prefersReducedMotion = usePrefersReducedMotion()
-	const motionProps = prefersReducedMotion ? {} : animationProps
 
 	return (
 		<Box
@@ -60,7 +58,7 @@ export const MainLayout = ({
 				flex={1}
 				display="flex"
 				flexDirection="column"
-				{...motionProps}
+				{...animationProps}
 			>
 				{children}
 			</MotionBox>
