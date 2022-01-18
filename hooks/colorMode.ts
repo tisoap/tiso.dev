@@ -9,11 +9,11 @@ export const useBackgroundColor = () => useColorModeValue('gray.50', 'gray.800')
 
 export const useBrandColor = () => useColorModeValue('purple.600', 'purple.400')
 
-export const useLinkColor = () => useColorModeValue('blue.500', 'blue.300')
+export const useLinkColor = () => useColorModeValue('blue.600', 'blue.300')
 
 export const useBodyTextColor = () => useColorModeValue('gray.800', 'gray.100')
 
-export const useMutedTextColor = () => useColorModeValue('gray.500', 'gray.300')
+export const useMutedTextColor = () => useColorModeValue('gray.600', 'gray.300')
 
 export const useBrandTextColor = () =>
 	useColorModeValue('purple.800', 'purple.200')

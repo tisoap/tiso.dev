@@ -25,6 +25,15 @@ export const MainLayout = ({
 	title = data.website.name,
 }: MainLayoutProps) => {
 	const router = useRouter()
+	let isLocal = false
+
+	if (typeof window !== 'undefined') {
+		isLocal = window?.location?.hostname === 'localhost'
+	}
+
+	const canonical = isLocal
+		? `http://localhost:3000${router.asPath}`
+		: `${data.website.domain}${router.asPath}`
 
 	return (
 		<Box
@@ -37,7 +46,11 @@ export const MainLayout = ({
 		>
 			<Head>
 				<title>{title}</title>
-				<link rel="canonical" href={`${data.website.domain}${router.asPath}`} />
+				<link rel="canonical" href={canonical} />
+				<meta
+					name="description"
+					content={`${data.owner.firstName}'s personal website with their projects and blog posts.`}
+				/>
 				<meta name="robots" content="follow, index" />
 				<meta property="og:type" content="website" />
 				<meta
