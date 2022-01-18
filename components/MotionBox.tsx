@@ -1,5 +1,6 @@
 import { Box, usePrefersReducedMotion } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
+import mobile from 'is-mobile'
 
 const Motion = motion(Box)
 
@@ -14,9 +15,11 @@ const noAnimationProps = {
 }
 
 export const MotionBox = (props: MotionBoxProps) => {
-	const reducedMotion = usePrefersReducedMotion()
+	const prefersReducedMotion = usePrefersReducedMotion()
+	const isMobileDevice = mobile()
+	const noAnimation = prefersReducedMotion || isMobileDevice
 
-	if (reducedMotion) {
+	if (noAnimation) {
 		return <Motion {...props} {...noAnimationProps} />
 	}
 

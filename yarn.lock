@@ -5116,6 +5116,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-mobile@npm:3.0.0":
+  version: 3.0.0
+  resolution: "is-mobile@npm:3.0.0"
+  checksum: 523b4da1c7c9a2eacd803f979de1621675a488630d30b157d352b30e5cedabd520da8ff6b9f49a51f55881b1d04f25873a3e79ba7aa01bf00543179c8df17992
+  languageName: node
+  linkType: hard
+
 "is-negative-zero@npm:^2.0.1":
   version: 2.0.1
   resolution: "is-negative-zero@npm:2.0.1"
@@ -7506,6 +7513,7 @@ __metadata:
     eslint-plugin-react-hooks: 4.3.0
     framer-motion: 5.6.0
     gray-matter: 4.0.3
+    is-mobile: 3.0.0
     next: 12.0.8
     next-mdx-remote: 3.0.8
     prettier: 2.5.1
