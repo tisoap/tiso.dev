@@ -13,10 +13,12 @@
 	],
 	"allowCompoundWords": false,
 	"words": [
+		"Abramov",
 		"atrule",
 		"chakra",
 		"Consolas",
 		"Cyclomatic",
+		"Fira",
 		"hireme",
 		"Menlo",
 		"monospace",
