@@ -1,5 +1,5 @@
 import { ChakraProvider } from '@chakra-ui/react'
-import { theme } from './theme'
+import { theme, config } from './theme'
 import type { ReactNode } from 'react'
 
 type ThemeProviderProps = {
@@ -11,3 +11,5 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => (
 		{children}
 	</ChakraProvider>
 )
+
+export { theme, config }

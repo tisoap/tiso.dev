@@ -1,12 +1,10 @@
 import { Heading, Text, chakra } from '@chakra-ui/react'
-import { MDXProvider } from '@mdx-js/react'
 import { ExternalLink } from 'components/ExternalLink'
 import { InternalLink } from 'components/InternalLink'
 import { useBrandColor } from 'hooks/colorMode'
 import type { LinkProps, HeadingProps, TextProps } from '@chakra-ui/react'
-import type { ReactNode } from 'react'
 
-const a = (props: LinkProps) => {
+export const a = (props: LinkProps) => {
 	const href = props.href
 	if (!href) throw new Error('Link must have an href')
 
@@ -27,17 +25,19 @@ const a = (props: LinkProps) => {
 	)
 }
 
-const h1 = (props: HeadingProps) => (
+export const h1 = (props: HeadingProps) => (
 	<Heading size="xl" mt={8} mb={4} {...props} />
 )
-const h2 = (props: HeadingProps) => (
+
+export const h2 = (props: HeadingProps) => (
 	<Heading size="lg" mt={8} mb={4} {...props} />
 )
-const h3 = (props: HeadingProps) => (
+
+export const h3 = (props: HeadingProps) => (
 	<Heading size="md" mt={8} mb={4} {...props} />
 )
 
-const p = (props: TextProps) => (
+export const p = (props: TextProps) => (
 	<Text
 		my={4}
 		lineHeight="1.8em"
@@ -48,7 +48,7 @@ const p = (props: TextProps) => (
 	/>
 )
 
-const blockquote = (props: TextProps) => (
+export const blockquote = (props: TextProps) => (
 	<Text
 		as="blockquote"
 		lineHeight="1.8em"
@@ -62,27 +62,9 @@ const blockquote = (props: TextProps) => (
 	/>
 )
 
-const li = chakra('li', {
+export const li = chakra('li', {
 	baseStyle: {
 		ml: 4,
 		pl: 1,
 	},
 })
-
-export const components = {
-	a,
-	h1,
-	h2,
-	h3,
-	p,
-	blockquote,
-	li,
-}
-
-export type MarkdownProviderProps = {
-	children: ReactNode
-}
-
-export const MarkdownProvider = ({ children }: MarkdownProviderProps) => (
-	<MDXProvider components={components}>{children}</MDXProvider>
-)
