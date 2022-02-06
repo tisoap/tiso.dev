@@ -3,7 +3,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import { serialize } from 'next-mdx-remote/serialize'
 import readingTime from 'reading-time'
-import rehypePrism from 'rehype-prism-plus'
+import rehypePrismPlus from 'rehype-prism-plus'
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import type { IReadTimeResults } from 'reading-time'
 
@@ -66,7 +66,7 @@ export const getPostBySlug = async (slug: string) => {
 	const blogPost = getPostData(fileName)
 
 	const mdxSource = await serialize(blogPost.content, {
-		mdxOptions: { rehypePlugins: [rehypePrism] },
+		mdxOptions: { rehypePlugins: [rehypePrismPlus] },
 	})
 
 	return {
