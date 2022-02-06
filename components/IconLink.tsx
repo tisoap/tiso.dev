@@ -1,5 +1,4 @@
 import { Link } from '@chakra-ui/react'
-import { useBrandColor } from 'hooks/colorMode'
 import type { LinkProps } from '@chakra-ui/react'
 
 export interface SocialIconsProps extends LinkProps {
@@ -12,9 +11,7 @@ export const IconLink = (props: SocialIconsProps) => {
 		<Link
 			isExternal
 			fontSize={['3xl', '4xl', '5xl']}
-			_hover={{
-				color: useBrandColor(),
-			}}
+			_hover={{ color: 'brand' }}
 			{...props}
 		/>
 	)

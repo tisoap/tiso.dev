@@ -1,4 +1,3 @@
-import { useForegroundColor, useBrandColor } from 'hooks/colorMode'
 import { MotionBox } from './MotionBox'
 import type { BoxProps } from '@chakra-ui/react'
 import type { ReactNode } from 'react'
@@ -11,9 +10,9 @@ export interface CardProps extends BoxProps {
 export const Card = ({ children, layoutId, ...rest }: CardProps) => (
 	<MotionBox
 		layoutId={layoutId}
-		backgroundColor={useForegroundColor()}
+		backgroundColor="foreground"
 		borderTop="2px solid"
-		borderTopColor={useBrandColor()}
+		borderTopColor="brand"
 		width="100%"
 		overflow="hidden"
 		boxShadow="base"

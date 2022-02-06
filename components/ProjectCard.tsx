@@ -1,5 +1,4 @@
 import { Heading, Text, VStack, HStack } from '@chakra-ui/react'
-import { useBrandColor, useMutedTextColor } from 'hooks/colorMode'
 import { Card } from './Card'
 import { ExternalLink } from './ExternalLink'
 import type { Project } from 'data/projects'
@@ -14,7 +13,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
 			<VStack spacing={3} alignItems="start">
 				<Text
 					as="span"
-					color={useBrandColor()}
+					color="brand"
 					textTransform="uppercase"
 					fontWeight="bold"
 					fontSize={['xs', 'xs', 'sm']}
@@ -25,7 +24,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
 				<Heading as="h3" fontSize={['md', 'xl', '2xl']} fontFamily="body">
 					{project.name}
 				</Heading>
-				<Text color={useMutedTextColor()}>{project.description}</Text>
+				<Text color="mutedText">{project.description}</Text>
 				<HStack spacing={3}>
 					{project.demo && (
 						<ExternalLink href={project.demo}>Preview</ExternalLink>

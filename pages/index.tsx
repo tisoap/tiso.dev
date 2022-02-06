@@ -3,7 +3,6 @@ import { AnimatedTag } from 'components/AnimatedTag'
 import { RecentProjectPost } from 'components/RecentProjectPost'
 import { SocialIcons } from 'components/SocialIcons'
 import { data } from 'data'
-import { useBrandColor } from 'hooks/colorMode'
 import { MainLayout } from 'layouts'
 import { getTimeWorking } from 'lib/date'
 import { getAllPostsData } from 'lib/mdx'
@@ -24,7 +23,7 @@ const HomePage = ({ posts }: HomeProps) => {
 					mb={4}
 				>
 					Hi, I&apos;m&nbsp;
-					<Box as="span" color={useBrandColor()}>
+					<Box as="span" color="brand">
 						{data.owner.firstName}
 					</Box>
 					&nbsp;

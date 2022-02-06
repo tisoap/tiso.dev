@@ -11,7 +11,7 @@
 		"check": "yarn typecheck && yarn spellcheck && yarn prettier && yarn eslint",
 		"dev": "next",
 		"eslint": "eslint --report-unused-disable-directives --fix --ext .js,.ts,.jsx,.tsx .",
-		"generate-theme-typings": "chakra-cli tokens --strict-component-types ./providers/theme.ts",
+		"generate-theme-typings": "chakra-cli tokens --strict-component-types ./providers/ThemeProvider/theme.ts",
 		"prettier": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,mdx,json}' --config ./.prettierrc",
 		"spellcheck": "cspell --no-progress '**/*.{js,jsx,ts,tsx,json,css,scss,md,mdx}'",
 		"start": "next start",

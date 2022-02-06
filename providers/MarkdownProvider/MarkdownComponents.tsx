@@ -1,7 +1,6 @@
 import { Heading, Text, chakra } from '@chakra-ui/react'
 import { ExternalLink } from 'components/ExternalLink'
 import { InternalLink } from 'components/InternalLink'
-import { useBrandColor } from 'hooks/colorMode'
 import type { LinkProps, HeadingProps, TextProps } from '@chakra-ui/react'
 
 export const a = (props: LinkProps) => {
@@ -57,7 +56,7 @@ export const blockquote = (props: TextProps) => (
 		fontStyle="italic"
 		borderLeft="2px solid"
 		rounded="md"
-		borderColor={useBrandColor()}
+		borderColor="brand"
 		{...props}
 	/>
 )

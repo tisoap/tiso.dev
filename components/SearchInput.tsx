@@ -1,6 +1,5 @@
 import { InputGroup, InputRightElement, Input } from '@chakra-ui/react'
 import { AiOutlineSearch } from 'react-icons/ai'
-import { useForegroundColor } from 'hooks/colorMode'
 import type { InputProps } from '@chakra-ui/react'
 
 export interface SearchInputProps extends InputProps {
@@ -19,7 +18,7 @@ export const SearchInput = (props: SearchInputProps) => {
 			<InputRightElement pointerEvents="none">
 				<AiOutlineSearch />
 			</InputRightElement>
-			<Input backgroundColor={useForegroundColor()} type="text" {...props} />
+			<Input backgroundColor="foreground" type="text" {...props} />
 		</InputGroup>
 	)
 }

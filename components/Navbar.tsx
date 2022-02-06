@@ -1,5 +1,4 @@
 import { Flex } from '@chakra-ui/react'
-import { useBrandColor, useForegroundColor } from 'hooks/colorMode'
 import { Menu } from './Menu'
 import { MobileMenu } from './MobileMenu'
 import { ToggleLightDarkButton } from './ToggleLightDarkButton'
@@ -12,8 +11,8 @@ export const Navbar = (props: FlexProps) => {
 			justifyContent="space-between"
 			p={4}
 			borderTop="4px solid"
-			backgroundColor={useForegroundColor()}
-			borderTopColor={useBrandColor()}
+			backgroundColor="foreground"
+			borderTopColor="brand"
 			boxShadow="base"
 			{...props}
 		>

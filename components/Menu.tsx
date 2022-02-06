@@ -1,7 +1,6 @@
 import { HStack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { menus } from 'data/menus'
-import { useBrandColor } from 'hooks/colorMode'
 import { InternalLink } from './InternalLink'
 import type { StackProps } from '@chakra-ui/react'
 
@@ -11,9 +10,8 @@ export const Menu = (props: StackProps) => {
 	return (
 		<HStack spacing={4} fontSize="lg" userSelect="none" {...props}>
 			{menus.map((menu) => {
-				const brand = useBrandColor()
 				const isPath = router.asPath === menu.link
-				const color = isPath ? brand : undefined
+				const color = isPath ? 'brand' : undefined
 
 				return (
 					<InternalLink

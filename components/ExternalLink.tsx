@@ -1,6 +1,5 @@
 import { Link, Text } from '@chakra-ui/react'
 import { BiLinkExternal } from 'react-icons/bi'
-import { useLinkColor } from 'hooks/colorMode'
 import type { LinkProps } from '@chakra-ui/react'
 import type { ReactNode } from 'react'
 
@@ -18,7 +17,7 @@ export const ExternalLink = ({
 		<Link
 			isExternal
 			href={href}
-			color={useLinkColor()}
+			color="link"
 			display="inline"
 			alignItems="center"
 			borderBottom="2px solid"

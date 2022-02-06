@@ -9,7 +9,6 @@ import {
 import { useRouter } from 'next/router'
 import { BiMenu } from 'react-icons/bi'
 import { menus } from 'data/menus'
-import { useBrandColor, useForegroundColor } from 'hooks/colorMode'
 import { NextLink } from './NextLink'
 import type { MenuButtonProps } from '@chakra-ui/react'
 
@@ -21,11 +20,10 @@ export const MobileMenu = (props: MenuButtonProps) => {
 			<MenuButton as={Button} rightIcon={<BiMenu />} {...props}>
 				Navigation Menu
 			</MenuButton>
-			<MenuList backgroundColor={useForegroundColor()}>
+			<MenuList backgroundColor="foreground">
 				{menus.map((menu) => {
-					const brand = useBrandColor()
 					const isPath = router.asPath === menu.link
-					const color = isPath ? brand : undefined
+					const color = isPath ? 'brand' : undefined
 
 					return (
 						<NextLink key={menu.name} href={menu.link} passHref>

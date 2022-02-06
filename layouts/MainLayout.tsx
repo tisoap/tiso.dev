@@ -5,7 +5,6 @@ import { Footer } from 'components/Footer'
 import { MotionBox } from 'components/MotionBox'
 import { Navbar } from 'components/Navbar'
 import { data } from 'data'
-import { useBodyTextColor, useBackgroundColor } from 'hooks/colorMode'
 import type { ReactNode } from 'react'
 
 export type MainLayoutProps = {
@@ -40,8 +39,8 @@ export const MainLayout = ({
 			minHeight="100%"
 			display="flex"
 			flexDirection="column"
-			color={useBodyTextColor()}
-			backgroundColor={useBackgroundColor()}
+			color="bodyText"
+			backgroundColor="background"
 			id="layout"
 		>
 			<Head>

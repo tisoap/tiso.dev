@@ -1,5 +1,4 @@
 import { Link } from '@chakra-ui/react'
-import { useLinkColor } from 'hooks/colorMode'
 import { NextLink } from './NextLink'
 import type { LinkProps } from '@chakra-ui/react'
 import type { ReactNode } from 'react'
@@ -17,7 +16,7 @@ export const InternalLink = ({
 	return (
 		<NextLink href={href} passHref>
 			<Link
-				color={useLinkColor()}
+				color="link"
 				display="inline-flex"
 				alignItems="center"
 				borderBottom="2px solid"

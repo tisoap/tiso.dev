@@ -1,10 +1,5 @@
 import { Heading, VStack, Text, Link } from '@chakra-ui/react'
 import NextLink from 'next/link'
-import {
-	useCardHoverColor,
-	useBrandColor,
-	useMutedTextColor,
-} from 'hooks/colorMode'
 import { formatStringDate } from 'lib/date'
 import { Card } from './Card'
 import type { BoxProps } from '@chakra-ui/react'
@@ -25,13 +20,13 @@ export const PostCard = ({ post, ...rest }: PostCardProps) => {
 					width="100%"
 					userSelect="none"
 					textAlign="left"
-					_hover={{ backgroundColor: useCardHoverColor() }}
+					_hover={{ backgroundColor: 'cardHover' }}
 					{...rest}
 				>
 					<VStack as="header" spacing={2} alignItems="start">
 						<Text
 							as="span"
-							color={useBrandColor()}
+							color="brand"
 							textTransform="uppercase"
 							fontWeight="bold"
 							fontSize={['xs', 'xs', 'sm']}
@@ -42,7 +37,7 @@ export const PostCard = ({ post, ...rest }: PostCardProps) => {
 						<Heading as="h3" fontSize={['md', 'xl', '2xl']} fontFamily="body">
 							{post.frontMatter.title}
 						</Heading>
-						<Text color={useMutedTextColor()} textDecoration="underline">
+						<Text color="mutedText" textDecoration="underline">
 							{dateString} · {readingTime}
 						</Text>
 					</VStack>

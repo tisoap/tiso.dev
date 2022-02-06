@@ -2,7 +2,6 @@ import { Card } from 'components/Card'
 import { FrontMatter } from 'components/FrontMatter'
 import { InternalLink } from 'components/InternalLink'
 import { data } from 'data'
-import { useBodyTextColor, useInlineCodeBgColor } from 'hooks/colorMode'
 import { MainLayout } from './MainLayout'
 import type { PostFrontMatter, PostMetadata } from 'lib/mdx'
 import type { ReactNode } from 'react'
@@ -39,8 +38,8 @@ export const BlogLayout = ({
 						borderRadius: 'md',
 					},
 					'& p code': {
-						color: useBodyTextColor(),
-						backgroundColor: useInlineCodeBgColor(),
+						color: 'bodyText',
+						backgroundColor: 'inlineCodeBg',
 						padding: '.1em .3em',
 						borderRadius: 'md',
 					},
