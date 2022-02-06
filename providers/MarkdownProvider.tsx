@@ -1,4 +1,4 @@
-import { Heading, Text } from '@chakra-ui/react'
+import { Heading, Text, chakra } from '@chakra-ui/react'
 import { MDXProvider } from '@mdx-js/react'
 import { ExternalLink } from 'components/ExternalLink'
 import { InternalLink } from 'components/InternalLink'
@@ -62,7 +62,12 @@ const blockquote = (props: TextProps) => (
 	/>
 )
 
-const li = (props: TextProps) => <Text as="li" ml={4} pl={1} {...props} />
+const li = chakra('li', {
+	baseStyle: {
+		ml: 4,
+		pl: 1,
+	},
+})
 
 export const components = {
 	a,
