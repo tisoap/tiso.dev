@@ -16,8 +16,15 @@ export const projects: Project[] = [
 	{
 		name: 'Next Template App',
 		github: 'https://github.com/tisoap/next-template-app',
-		description: 'Next.js template with typescript, Chakra UI, and more.',
+		description: 'Next.js template with TypeScript, Chakra UI, and more.',
 		demo: 'https://next-template-app.vercel.app/',
+	},
+	{
+		name: 'CRA Template App',
+		github: 'https://github.com/tisoap/cra-template-app',
+		description:
+			'Create React App template with TypeScript, Chakra UI, and more.',
+		demo: 'https://cra-template-app.vercel.app/',
 	},
 	{
 		name: 'tiso.dev',
