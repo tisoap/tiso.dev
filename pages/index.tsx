@@ -6,6 +6,7 @@ import { data } from 'data'
 import { MainLayout } from 'layouts'
 import { getTimeWorking } from 'lib/date'
 import { getAllPostsData } from 'lib/mdx'
+import { generateRSSFeed } from 'lib/rss'
 import type { BlogPost } from 'lib/mdx'
 
 export type HomeProps = {
@@ -42,6 +43,7 @@ const HomePage = ({ posts }: HomeProps) => {
 
 export function getStaticProps() {
 	const posts = getAllPostsData()
+	generateRSSFeed(posts)
 	return { props: { posts } }
 }
 

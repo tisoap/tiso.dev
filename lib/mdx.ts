@@ -44,7 +44,7 @@ export const getPostData = (filename: string) => {
 
 export const getBlogFiles = () => fs.readdirSync(blogFolder)
 
-export const getAllPostsData = () => {
+export const getAllPostsData = (): BlogPost[] => {
 	return getBlogFiles()
 		.reduce(
 			(accumulator, filename) => [...accumulator, getPostData(filename)],

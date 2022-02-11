@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>tiso.dev Feed</title>
+        <link>https://tiso.dev</link>
+        <description>Tiso's Blog</description>
+        <lastBuildDate>Fri, 11 Feb 2022 20:35:09 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <copyright>All rights reserved 2022, Tiso Alvarez Puccinelli</copyright>
+        <item>
+            <title><![CDATA[You Might Not Need Redux]]></title>
+            <link>https://tiso.dev/blog/you-might-not-need-redux</link>
+            <guid>you-might-not-need-redux</guid>
+            <pubDate>Wed, 26 Jan 2022 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[[Redux](https://redux.js.org/) is for many considered the industry _standard_ way to manage state in React applications. But much like using a cannon to kill a mosquito, more often than not Redux is overkill for many scenarios. From my personal experience, it's very easy for a Redux-based application to grow out of control in complexity really fast if you are not diligent in you code reviews.]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[You shouldn't have to worry about CSS class names]]></title>
+            <link>https://tiso.dev/blog/you-should-not-have-to-worry-about-css-class-names</link>
+            <guid>you-should-not-have-to-worry-about-css-class-names</guid>
+            <pubDate>Fri, 14 Jan 2022 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[Naming things in software development is often considered a difficult task. This is especially true when writing CSS selectors that can potentially clash with each other without warning, if you're not careful. To avoid this problem, it's common for developers to adopt a CSS _naming convention_, like [BEM](http://getbem.com/), [SMACSS](http://smacss.com/) and other letter soup acronyms.]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Preventing code degradation with eslint-plugin-sonarjs]]></title>
+            <link>https://tiso.dev/blog/preventing-code-degradation-with-eslint-plugin-sonarjs</link>
+            <guid>preventing-code-degradation-with-eslint-plugin-sonarjs</guid>
+            <pubDate>Thu, 23 Dec 2021 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[If you have worked with any sizable JavaScript project, be a front-end React application or a back-end Node service, you are most likely aware of the importance of using ESLint and other static code analysis tools.]]></content:encoded>
+        </item>
+    </channel>
+</rss>
