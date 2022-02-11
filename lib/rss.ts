@@ -10,7 +10,7 @@ export const generateRSSFeed = (posts: BlogPost[]) => {
 
 	const feed = new Feed({
 		title: `${data.website.name} Feed`,
-		description: `${data.owner.firstName}'s Blog`,
+		description: `${data.owner.firstName}'s Blog Feed`,
 		id: `${domain}`,
 		link: `${domain}`,
 		favicon: `${domain}/favicon.ico`,
