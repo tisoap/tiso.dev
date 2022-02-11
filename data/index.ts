@@ -10,7 +10,6 @@ export const data = {
 		startedWorking: new Date(2016, 5, 27),
 		gitHub: 'https://github.com/tisoap',
 		linkedIn: 'https://www.linkedin.com/in/tiso-alvarez-puccinelli',
-		stackOverflow: 'https://stackoverflow.com/users/story/8078275',
 		tripetto: 'https://tripetto.app/run/FH9XOQ7SCZ',
 	},
 } as const
