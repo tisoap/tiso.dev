@@ -1,6 +1,11 @@
 import { ColorModeScript } from '@chakra-ui/react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
+import React from 'react'
 import { config } from 'providers/ThemeProvider'
+
+if (typeof document === 'undefined') {
+	React.useLayoutEffect = React.useEffect
+}
 
 class MyDocument extends Document {
 	render() {

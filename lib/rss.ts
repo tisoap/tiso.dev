@@ -1,8 +1,9 @@
 import fs from 'fs'
 import path from 'path'
 import { Feed } from 'feed'
-import { data } from '../data'
-import { BlogPost } from './mdx'
+import { marked } from 'marked'
+import { data } from 'data'
+import type { BlogPost } from './mdx'
 
 export const generateRSSFeed = (posts: BlogPost[]) => {
 	const domain = data.website.domain
@@ -23,12 +24,13 @@ export const generateRSSFeed = (posts: BlogPost[]) => {
 
 	posts.forEach((post) => {
 		const firstParagraph = post.content.split('\n')[1]
+		const content = marked.parse(firstParagraph)
 
 		feed.addItem({
 			title: post.frontMatter.title,
 			id: post.metadata.slug,
 			link: `${domain}/blog/${post.metadata.slug}`,
-			content: firstParagraph,
+			content,
 			author: [
 				{
 					name: data.owner.fullName,
