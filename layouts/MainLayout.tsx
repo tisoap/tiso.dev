@@ -27,7 +27,7 @@ export const MainLayout = ({
 	let isLocal = false
 
 	if (typeof window !== 'undefined') {
-		isLocal = window?.location?.hostname === 'localhost'
+		isLocal = window.location.hostname === 'localhost'
 	}
 
 	const canonical = isLocal

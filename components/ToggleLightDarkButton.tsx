@@ -15,15 +15,12 @@ export const ToggleLightDarkButton = () => {
 		setOffAudio(new Audio('/sounds/switch-2.mp3'))
 	}, [])
 
+	const icon =
+		colorMode === 'light' ? <BsFillLightbulbFill /> : <BsFillLightbulbOffFill />
+
 	return (
 		<IconButton
-			icon={
-				colorMode === 'light' ? (
-					<BsFillLightbulbOffFill />
-				) : (
-					<BsFillLightbulbFill />
-				)
-			}
+			icon={icon}
 			aria-label={text}
 			title={text}
 			borderRadius="md"
