@@ -45,7 +45,7 @@
 		"@chakra-ui/cli": "1.8.1",
 		"@next/bundle-analyzer": "12.0.10",
 		"@next/eslint-plugin-next": "12.0.10",
-		"@tisoap/eslint-config-ts-react": "1.1.0",
+		"@tisoap/eslint-config-ts-react": "1.1.1",
 		"@types/marked": "4.0.2",
 		"@types/mdx-js__react": "1.5.5",
 		"@types/react": "17.0.39",

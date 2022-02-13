@@ -1,6 +1,5 @@
 module.exports = {
 	parserOptions: {
-		tsconfigRootDir: '.',
 		project: ['./tsconfig.json'],
 	},
 	plugins: ['prettier'],
