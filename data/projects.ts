@@ -7,6 +7,12 @@ export type Project = {
 
 export const projects: Project[] = [
 	{
+		name: 'ESLint Config TS React',
+		github: 'https://github.com/tisoap/eslint-config-ts-react',
+		description:
+			'Shareable ESLint config for TypeScript based React applications.',
+	},
+	{
 		name: 'React Flow Smart Edge',
 		github: 'https://github.com/tisoap/react-flow-smart-edge',
 		description:
