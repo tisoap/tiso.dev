@@ -83,3 +83,9 @@ This project uses [`rehype-prism-plus`](https://github.com/timlrx/rehype-prism-p
 ## License
 
 This project is licensed under the MIT License.
+
+### Support
+
+Liked this project and want to show your support? Buy me a coffee:
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J472RAJ)
