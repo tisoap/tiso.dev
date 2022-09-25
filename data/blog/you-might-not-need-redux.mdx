@@ -1,0 +1,202 @@
+---
+title: 'You Might Not Need Redux'
+publishedAt: '2022-01-26'
+---
+
+[Redux](https://redux.js.org/) is for many considered the industry _standard_ way to manage state in React applications. But much like using a cannon to kill a mosquito, more often than not Redux is overkill for many scenarios. From my personal experience, it's very easy for a Redux-based application to grow out of control in complexity really fast if you are not diligent in you code reviews.
+
+I'll list here a few scenarios where Redux isn't necessary, and a few where it can be a good call.
+
+## Local state is king
+
+In the same way you wouldn't store all your variables inside the `window` object, you shouldn't store all your state inside a global store. A global store is for, you guessed it, _for state that should be globally available_. There's no need to save the current color of an button in said store.
+
+## Avoiding prop drilling
+
+If all you need is a way to avoid prop drilling, then [Context](https://reactjs.org/docs/context.html) is your friend. Since version `16.3`, React ships with this API that allows you to declare some data in a `Provider` component, and have this data available anywhere down the tree from a `useContext` hook:
+
+### `ThemeContext.jsx`
+
+```jsx
+import { createContext } from 'react'
+
+export const ThemeContext = createContext('light')
+```
+
+### `index.jsx`
+
+```jsx
+import { MyComponent } from './MyComponent.jsx'
+import { ThemeContext } from './ThemeContext.jsx'
+import { render } from 'react-dom'
+
+render(
+	<ThemeContext.Provider value="dark">
+		<MyComponent />
+	</ThemeContext.Provider>,
+	document.getElementById('root'),
+)
+```
+
+### `Component.jsx`
+
+```jsx
+import { useContext } from 'react'
+import { ThemeContext } from './ThemeContext.jsx'
+
+export const MyComponent = () => {
+	const currentTheme = useContext(ThemeContext)
+	return <p>This app is using the {currentTheme} theme.</p>
+}
+```
+
+### Result
+
+```html
+<p>This app is using the dark theme.</p>
+```
+
+On the above example, we didn't need to pass the theme value as props, instead we recovered it directly from our Context.
+
+## Updating data on distant components
+
+You have two components that are distant from each other in the render tree, but still need to be able to share and update the same data for both. This problem can also be solved with Context, in combination with `useState` hooks:
+
+### `CounterProvider.jsx`
+
+```jsx
+import { createContext, useState, useContext } from 'react'
+
+const CounterContext = createContext({
+	value: 0,
+	setValue: () => {}
+})
+
+export const useCounter = () => useContext(CounterContext)
+
+export const CounterProvider = ({ children  }) => {
+	const [value, setValue] = useState(0)
+
+	return (
+		<CounterContext.Provider value={{ value, setValue }}>
+			{children}
+		</ThemeContext.Provider>
+	)
+}
+```
+
+In the example above, all components under `CounterProvider` that use `useCounter` will receive a `{ value, setValue }` object. Calling `setValue()` with a new number will update the `value` for all other components using `useCounter`.
+
+You can also make a version with [useReducer](https://reactjs.org/docs/hooks-reference.html#usereducer) if you need more control on how the value must be updated.
+
+## Saving the fetch result of an endpoint
+
+It's a common pattern in Redux-heavy applications to have _all_ you application logic living inside reducers and action creators, including async operations like fetching data from a server, with the help of middleware like [redux-thunk](https://github.com/reduxjs/redux-thunk#redux-thunk).
+
+If you see yourself repeating those patterns to have this external data available in your application, manually creating some `isLoading` and `error` states in your reducers, then a much simpler solution is to have a data fetching/caching library that was specifically built to handle this situation.
+
+[React Query](https://react-query.tanstack.com/) and [SWR](https://swr.vercel.app/) are very popular ones, and [Apollo Client](https://www.apollographql.com/docs/react/) uses a similar logic for GraphQL endpoints.
+
+Here's how it would look like fetching data from a REST API using React Query:
+
+### `index.jsx`
+
+```jsx
+import { Example } from './Example.jsx'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { render } from 'react-dom'
+
+const queryClient = new QueryClient()
+
+render(
+	<QueryClientProvider client={queryClient}>
+		<Example />
+	</QueryClientProvider>,
+	document.getElementById('root'),
+)
+```
+
+### `Example.jsx`
+
+```jsx
+import { useQuery } from 'react-query'
+
+const fetchData = async () => {
+	const response = await fetch('https://api.test.com/v1/endpoint')
+	const data = await response.json()
+	return data
+}
+
+export const Example = () => {
+	const { isLoading, error, data, isFetching } = useQuery('myData', fetchData)
+
+	if (isLoading) return 'Loading...'
+
+	if (error) return 'An error has occurred: ' + error.message
+
+	return (
+		<div>
+			<p>{data.content}</p>
+			<div>{isFetching ? 'Updating...' : ''}</div>
+		</div>
+	)
+}
+```
+
+Notice how it automatically handles first load, error and update states for you. The data is also cached, so multiple calls to `useQuery` using the same [query keys](https://react-query.tanstack.com/guides/query-keys) will make use of the local cache.
+
+## Managing form state
+
+If you're using any Redux tooling to manage state and validation of a form, I've got good news for you! We now have [react-hook-form](https://github.com/react-hook-form/react-hook-form#readme), and as the name suggests, it's a form library built around React Hooks, and it's very simple to use.
+
+Here's a quick start example:
+
+```jsx
+import { useForm } from 'react-hook-form'
+
+const MyForm = () => {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm()
+
+	const onSubmit = (data) => console.log(data)
+
+	return (
+		<form onSubmit={handleSubmit(onSubmit)}>
+			<input {...register('firstName')} />
+			<input {...register('lastName', { required: true })} />
+			{errors.lastName && <p>Last name is required.</p>}
+			<input {...register('age', { pattern: /\d+/ })} />
+			{errors.age && <p>Please enter number for age.</p>}
+			<input type="submit" />
+		</form>
+	)
+}
+```
+
+Notice how all the validation is described inside `register()` calls, and you get the updated form state from the `useForm()` hook. The `data` sent to `onSubmit` will be an object with all the form data, with the input names as keys. No actions, action creators, dispatchers, reducers or selectors in sight.
+
+## OK, when should I use Redux then?
+
+The Redux team itself answered this question very eloquently in [their FAQ](https://redux.js.org/faq/general#when-should-i-use-redux). But to quote the most important bit:
+
+> Redux is most useful when in cases when:
+>
+> - You have large amounts of application state that are needed in many places in the app
+> - The app state is updated frequently
+> - The logic to update that state may be complex
+> - The app has a medium or large-sized codebase, and might be worked on by many people
+> - You need to see how that state is being updated over time
+
+Dan Abramov also created an [equally titled post](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367), where here describes a few more situations where Redux shines:
+
+> - Persist state to a local storage and then boot up from it, out of the box.
+> - Pre-fill state on the server, send it to the client in HTML, and boot up from it, out of the box.
+> - Serialize user actions and attach them, together with a state snapshot, to automated bug reports, so that the product developers can replay them to reproduce the errors.
+> - Pass action objects over the network to implement collaborative environments without dramatic changes to how the code is written.
+> - Maintain an undo history or implement optimistic mutations without dramatic changes to how the code is written.
+> - Travel between the state history in development, and re-evaluate the current state from the action history when the code changes, a la TDD.
+> - Provide full inspection and control capabilities to the development tooling so that product developers can build custom tools for their apps.
+> - Provide alternative UIs while reusing most of the business logic.

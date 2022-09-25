@@ -1,0 +1,7 @@
+node_modules
+.next
+.husky
+.vercel
+.yarn
+next.config.js
+.eslintrc.js
